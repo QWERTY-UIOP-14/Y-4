@@ -1,58 +1,64 @@
-const fs = require('fs');
-const moment = require('moment-timezone');
- 
 module.exports = {
-	config: {
-		name: "info",
-		version: "1.0",
-		author: "SIDDIK",
-		countDown: 20,
-		role: 0,
-		shortDescription: { vi: "", en: "" },
-		longDescription: { vi: "", en: "" },
-		category: "owner",
-		guide: { en: "" },
-		envConfig: {}
-	},
-	onStart: async function ({ message }) {
-		const botName = "𝐒𝐊_𝐒𝐈𝐃𝐃𝐈𝐊_⓿❼";
-		const botPrefix = "/";
-		const authorName = "𝐒𝐊_𝐒𝐈𝐃𝐃𝐈𝐊";
-		const ownAge = "18";
-		const authorFB = "m.me/rxsiddik1";
-		const urls = JSON.parse(fs.readFileSync('scripts/cmds/Siddik/info.json'));
-		const link = urls[Math.floor(Math.random() * urls.length)];
-		const now = moment().tz('Asia/Dhaka');
-		const date = now.format('MMMM Do YYYY');
-		const time = now.format('h:mm:ss A');
-		const uptime = process.uptime();
-		const seconds = Math.floor(uptime % 60);
-		const minutes = Math.floor((uptime / 60) % 60);
-		const hours = Math.floor((uptime / (60 * 60)) % 24);
-		const days = Math.floor(uptime / (60 * 60 * 24));
-		const uptimeString = `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
+  config: {
+    name: "info",
+    version: "1.0",
+    author: "SK-SIDDIK-KHAN",
+    countDown: 5,
+    role: 0,
+    category: "auto",
+  },
+
+  onStart: async function () {},
+
+  onStart: async function ({ event, message, getLang, usersData, threadsData }) {
+  
+      const data = await usersData.get(event.senderID);
+
+      const name = data.name;
+
+      const thread = await threadsData.get(event.threadID);
+
+      const threadName = thread.threadName;
+
+      const currentDate = new Date();
+
+      const options = { year: "numeric", month: "numeric", day: "numeric" };
+
+      const date = currentDate.toLocaleDateString("en-US", options);
+
+      const time = currentDate.toLocaleTimeString("en-US", {
+        timeZone: "Asia/Dhaka",
+        hour12: true,
+      });
+
+      const img = `https://graph.facebook.com/100059026788061/picture?height=720&width=720&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`;
+
+      const msg = `✨𝐀𝐬𝐬𝐚𝐥𝐚𝐦𝐮 𝐖𝐚𝐥𝐚𝐢𝐤𝐮𝐦✨
  
-		message.reply({
-			body: ` ===「 Bot & Owner Info 」===
-❏ Bot Name: ${botName}
-❏ Prefix: ${botPrefix}
-❏ Owner: ${authorName}
-❏ Age: ${ownAge}
-❏ authorFb: ${authorFB}
-❏ seconds: ${seconds}
-❏ minutes: ${minutes}
-❏ hours: ${hours}
-❏ days: ${days}
-❏ date: ${date}
-❏ Time: ${time}
-❏ uptime: ${uptimeString}
- `,
-			attachment: await global.utils.getStreamFromURL(link)
-		});
-	},
-	onChat: async function ({ event, message, getLang }) {
-		if (event.body && event.body.toLowerCase() === "info") {
-			this.onStart({ message });
-		}
-	}
-};
+╭─────────────|
+╰‣ ❏ 𝐀𝐝𝐦𝐢𝐧 𝐈𝐧𝐟𝐨𝐫𝐦𝐚𝐭𝐢𝐨𝐧 ❏
+ 
+╭─────────────|
+╰‣ ❏ 𝐁𝐨𝐭 𝐍𝐚𝐦𝐞 : 𝐒𝐊_𝐒𝐈𝐃𝐃𝐈𝐊_⓿❼
+ 
+╭─────────────|
+╰‣ ❏ 𝐁𝐨𝐭 𝐀𝐝𝐦𝐢𝐧 : 𝐒𝐤 𝐒𝐢𝐝𝐝𝐢𝐤
+ 
+╭─────────────|
+╰‣ ❏ 𝐂𝐨𝐧𝐜𝐚𝐭𝐞𝐭
+ 
+╭─────────────|
+╰‣ ❏ 𝐅𝐚𝐜𝐞𝐛𝐨𝐨𝐤 : m.me/TERA.PAPPA.IS.BUSY
+ 
+╭─────────────|
+╰‣ ❏ 𝐓𝐠  : t.me/@rdxprem12
+ 
+╭─────────────|
+╰‣ ❏ 𝐓𝐡𝐚𝐧𝐤𝐬 𝐅𝐨𝐫 𝐔𝐬𝐢𝐧𝐠`;
+
+      message.reply({
+        body: msg,
+        attachment: await global.utils.getStreamFromURL(img)
+      });
+    }
+  };

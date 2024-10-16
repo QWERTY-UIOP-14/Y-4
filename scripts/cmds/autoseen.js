@@ -1,47 +1,48 @@
 const fs = require('fs-extra');
-const pathFile = __dirname + '/cache/autoseen.txt';
-
+const pathFile = __dirname + '/SK-SIDDIK-KHAN/autoseen.txt';
+ 
 module.exports = {
-	config: {
-	name: "autoseen",
-	version: "1.0.0",
-	hasPermssion: 2,
-	author: "Jas",
-	shortDescription: {
-			en: "Turn on/off automatically seen when new messages are available"
-		},
-		longDescription: {
-			en: "Turn on/off automatically seen when new messages are available"
-		},
-	category: "utils",
-	guide: {
-	 en: "on/off",
-},
-	cooldowns: 5,
-},
-
-onChat: async ({ api, event, args }) => {
+  config: {
+    name: 'autoseen',
+    aliases: ['seen'],
+    version: '1.0',
+    author: 'SIDDIK',
+    countDown: 5,
+    role: 2,
+    shortDescription: 'Turn on/off automatically seen when new messages are available',
+    longDescription: 'Turn on/off automatically seen when new messages are available',
+    category: '..',
+    guide: {
+     en: "on/off"
+   }
+  },
+ 
+onChat: async ({ api, event, args}) => {
+ 
 if (!fs.existsSync(pathFile))
-	 fs.writeFileSync(pathFile, 'false');
-	 const isEnable = fs.readFileSync(pathFile, 'utf-8');
-	 if (isEnable == 'true')
-		 api.markAsReadAll(() => {});
+  fs.writeFileSync(pathFile, 'false');
+  const isEnable = fs.readFileSync(pathFile, 'utf-8');
+  if (isEnable == 'true')
+    api.markAsReadAll(() => {});
 },
-
-onStart: async ({ api, event, args }) => {
-	 try {
-		 if (args[0] == 'on') {
-			 fs.writeFileSync(pathFile, 'true');
-			 api.sendMessage('The autoseen function is now enabled for new messages.', event.threadID, event.messageID);
-		 } else if (args[0] == 'off') {
-			 fs.writeFileSync(pathFile, 'false');
-			 api.sendMessage('The autoseen function has been disabled for new messages.', event.threadID, event.messageID);
-		 } else {
-			 api.sendMessage('Incorrect syntax', event.threadID, event.messageID);
-		 }
-	 }
-	 catch(e) {
-		 console.log(e);
-	 }
+   onStart: async ({ api, event,args }) => {
+ 
+ 
+ 
+ 
+  try {
+    if (args[0] == 'on') {
+     fs.writeFileSync(pathFile, 'true');
+     api.sendMessage('autoseen on successful😘', event.threadID, event.messageID);
+    } else if (args[0] == 'off') {
+     fs.writeFileSync(pathFile, 'false');
+     api.sendMessage('autoseen off successful😘', event.threadID, event.messageID);
+    } else {
+     api.sendMessage('Incorrect syntax', event.threadID, event.messageID);
+    }
+  }
+  catch(e) {
+    console.log(e);
+  }
 }
-};
+  };

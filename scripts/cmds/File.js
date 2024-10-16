@@ -1,39 +1,36 @@
-const fs = require("fs");
-const path = require("path");
- 
+const fs = require('fs');
+
 module.exports = {
-  config: {
-    name: "file",
-    aliases: ["givefile", "sendfile"],
-    version: "1.0",
-    author: "SK-SIDDIK-KHAN",
-    countDown: 5,
-    role: 2,
-    longDescription: {
-      en: "Out script file"
-    },
-    category: "owner",
-    guide: {
-      en: "{pn} <cmd file name>"
-    }
-  },
-  onStart: async function ({ api, event, args }) {
-    if (!["100059026788061"].includes(event.senderID)) {
-      return api.sendMessage(
-        "⚠️Only Permission User Can Use This File",
-        event.threadID,
-        event.messageID
-      );
-    }
-    const name = args.join(" ");
-    if (!name) {
-      return api.sendMessage("Please Provide The File Name", event.threadID);
-    }
-    try {
-      const fileContent = fs.readFileSync(__dirname + `/${name}.js`, "utf8");
-      api.sendMessage(fileContent, event.threadID);
-    } catch (error) {
-      api.sendMessage(`File not found`, event.threadID);
-    }
-  }
+	config: {
+		name: "file",
+		aliases: ["givefile", "sendfile"],
+		version: "1.0",
+		author: "SK-SIDDIK-KHAN",
+		countDown: 5,
+		role: 0,
+		shortDescription: "Send bot script",
+		longDescription: "Send bot specified file ",
+		category: "owner",
+		guide: "{pn} file name. Ex: .{pn} filename"
+	},
+
+	onStart: async function ({ message, args, api, event }) {
+		const permission = ["100059026788061",];
+		if (!permission.includes(event.senderID)) {
+			return api.sendMessage("[❗] 𝐎𝐧𝐥𝐲 𝐏𝐞𝐫𝐦𝐢𝐬𝐬𝐢𝐨𝐧 𝐔𝐬𝐞𝐫 𝐂𝐚𝐧 𝐔𝐬𝐞 𝐓𝐡𝐢𝐬 𝐅𝐢𝐥𝐞", event.threadID, event.messageID);
+		}
+
+		const fileName = args[0];
+		if (!fileName) {
+			return api.sendMessage("Please provide a file name", event.threadID, event.messageID);
+		}
+
+		const filePath = __dirname + `/${fileName}.js`;
+		if (!fs.existsSync(filePath)) {
+			return api.sendMessage(`🔰 File not found ${fileName}.js 🔰`, event.threadID, event.messageID);
+		}
+
+		const fileContent = fs.readFileSync(filePath, 'utf8');
+		api.sendMessage({ body: fileContent }, event.threadID);
+	}
 };

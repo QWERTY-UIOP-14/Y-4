@@ -27,7 +27,7 @@ module.exports = {
     }
     const name = args.join(" ");
     if (!name) {
-      return api.sendMessage("🔰Please provide the file name🔰", event.threadID);
+      return api.sendMessage("Please Provide The File Name", event.threadID);
     }
     try {
       const fileContent = fs.readFileSync(__dirname + `/${name}.js`, "utf8");

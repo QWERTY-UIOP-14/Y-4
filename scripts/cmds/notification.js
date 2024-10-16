@@ -30,20 +30,21 @@ module.exports = {
 			errorSendingNotification: "Có lỗi xảy ra khi gửi đến %1 nhóm:\n%2"
 		},
 		en: {
-			missingMessage: "Please enter the message you want to send to all groups",
-			notification: "Notification from admin bot to all chat groups (do not reply to this message)",
-			sendingNotification: "Start sending notification from admin bot to %1 chat groups",
-			sentNotification: "✅ Sent notification to %1 groups successfully",
-			errorSendingNotification: "An error occurred while sending to %1 groups:\n%2"
+			missingMessage: "⛔|𝗜𝗻𝘃𝗮𝗹𝗶𝗱 𝗨𝘀𝗲\n━━━━━━━━━━━━━━━\n\n⁉ Please enter the message you want to send to all groups",
+			notification: "📢|𝗡𝗼𝘁𝗶𝗳𝗶𝗰𝗮𝘁𝗶𝗼𝗻",
+			sendingNotification: "✅|𝗦𝗲𝗻𝗱𝗶𝗻𝗴\n━━━━━━━━━━━━━━━\n\nStart sending notification from admin bot to %1 chat groups",
+			sentNotification: "✅|𝗗𝗼𝗻𝗲\n\nSent notification to %1 groups successfully",
+			errorSendingNotification: "⛔|𝗘𝗿𝗿𝗼𝗿\n\nAn error occurred while sending to [ %1 ] groups:\n[ %2 ]"
 		}
 	},
 
-	onStart: async function ({ message, api, event, args, commandName, envCommands, threadsData, getLang }) {
+	onStart: async function ({ message, api, event, args, commandName, envCommands, threadsData, getLang, usersData }) {
+		const userInfo = await usersData.get(event.senderID);
 		const { delayPerGroup } = envCommands[commandName];
 		if (!args[0])
 			return message.reply(getLang("missingMessage"));
 		const formSend = {
-			body: `${getLang("notification")}\n────────────────\n${args.join(" ")}`,
+			body: `${getLang("notification")} 𝗳𝗿𝗼𝗺 ${userInfo.name}\n\n${args.join(" ")}`,
 			attachment: await getStreamsFromAttachment(
 				[
 					...event.attachments,

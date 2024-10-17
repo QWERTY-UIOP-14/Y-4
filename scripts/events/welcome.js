@@ -1,7 +1,7 @@
 const { getTime, drive } = global.utils;
 if (!global.temp.welcomeEvent)
 	global.temp.welcomeEvent = {};
-
+ 
 module.exports = {
 	config: {
 		name: "welcome",
@@ -9,7 +9,7 @@ module.exports = {
 		author: "NTKhang",
 		category: "events"
 	},
-
+ 
 	langs: {
 		vi: {
 			session1: "sáng",
@@ -32,7 +32,7 @@ module.exports = {
 			defaultWelcomeMessage: `Hello {userName}.\nWelcome {multiple} to the chat group: {boxName}\nHave a nice {session} 😊`
 		}
 	},
-
+ 
 	onStart: async ({ threadsData, message, event, api, getLang }) => {
 		if (event.logMessageType == "log:subscribe")
 			return async function () {
@@ -53,12 +53,12 @@ module.exports = {
 						joinTimeout: null,
 						dataAddedParticipants: []
 					};
-
+ 
 				// push new member to array
 				global.temp.welcomeEvent[threadID].dataAddedParticipants.push(...dataAddedParticipants);
 				// if timeout is set, clear it
 				clearTimeout(global.temp.welcomeEvent[threadID].joinTimeout);
-
+ 
 				// set new timeout
 				global.temp.welcomeEvent[threadID].joinTimeout = setTimeout(async function () {
 					const threadData = await threadsData.get(threadID);
@@ -70,10 +70,10 @@ module.exports = {
 					const userName = [],
 						mentions = [];
 					let multiple = false;
-
+ 
 					if (dataAddedParticipants.length > 1)
 						multiple = true;
-
+ 
 					for (const user of dataAddedParticipants) {
 						if (dataBanned.some((item) => item.id == user.userFbId))
 							continue;
@@ -111,9 +111,9 @@ module.exports = {
 										? getLang("session3")
 										: getLang("session4")
 						);
-
+ 
 					form.body = welcomeMessage;
-
+ 
 					if (threadData.data.welcomeAttachment) {
 						const files = threadData.data.welcomeAttachment;
 						const attachments = files.reduce((acc, file) => {
@@ -130,3 +130,4 @@ module.exports = {
 			};
 	}
 };
+ 

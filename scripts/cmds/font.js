@@ -601,7 +601,7 @@ module.exports = {
     if (!chosenFontMap) {
       const availableFonts = fontMaps.map((fontMap) => `├• ${fontMap.name}`).join('\n');
       return api.sendMessage(
-        `╭───────⊙\n𝐄𝐗𝐀𝐌𝐏𝐋𝐄 : 𝐅𝐎𝐍𝐓  ${availableFonts}\n╰────────────⊙`,
+        `╭───────⊙ ${availableFonts}\n╰────────────⊙`,
         event.threadID,
         event.messageID
       );

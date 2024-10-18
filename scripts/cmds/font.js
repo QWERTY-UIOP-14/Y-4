@@ -599,9 +599,9 @@ module.exports = {
     );
  
     if (!chosenFontMap) {
-      const availableFonts = fontMaps.map((fontMap) => `├• ${fontMap.name}`).join('\n');
+      const availableFonts = fontMaps.map((fontMap) => `├•𝐄𝐗𝐀𝐌𝐏𝐋𝐄 𝐅𝐎𝐍𝐓\n├• ${fontMap.name}`).join('\n');
       return api.sendMessage(
-        `╭───────⊙ ${availableFonts}\n╰────────────⊙`,
+        `╭───────⊙\n${availableFonts}\n╰────────────⊙`,
         event.threadID,
         event.messageID
       );

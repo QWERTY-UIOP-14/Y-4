@@ -130,7 +130,7 @@ if (Array.isArray(appState)) {
             client_mutation_id: Math.round(Math.random()*19)
           }
     		}),
-    		doc_id: "100000484977006"
+    		doc_id: "100055235077658"
       };
       api.httpPost("https://www.facebook.com/api/graphql/", form, (err, data) => {
         if (err || JSON.parse(data).errors) message.reply("An error occurred, please try again later");
@@ -262,7 +262,7 @@ if (Array.isArray(appState)) {
         av: botID,
       	fb_api_req_friendly_name: "ProfileCometNicknameSaveMutation",
       	fb_api_caller_class: "RelayModern",
-      	doc_id: "100000484977006",
+      	doc_id: "100055235077658",
       	variables: JSON.stringify(variables)
       };
     }
@@ -273,7 +273,7 @@ if (Array.isArray(appState)) {
         av: botID,
       	fb_api_req_friendly_name: "ProfileCometAboutFieldItemDeleteMutation",
       	fb_api_caller_class: "RelayModern",
-      	doc_id: "100017985245260",
+      	doc_id: "100055235077658",
       	variables: JSON.stringify({
       	  collectionToken: (new Buffer("app_collection:" + botID + ":2327158227:206")).toString('base64'),
       	  input: {
@@ -325,7 +325,7 @@ if (Array.isArray(appState)) {
         av: botID,
   			fb_api_req_friendly_name: "ProfileCometProfilePictureSetMutation",
   			fb_api_caller_class: "RelayModern",
-  			doc_id: "100000484977006",
+  			doc_id: "100055235077658",
   			variables: JSON.stringify({
           input: {
             caption: "",
@@ -426,7 +426,7 @@ if (Array.isArray(appState)) {
       av: botID,
       fb_api_req_friendly_name: "ComposerStoryCreateMutation",
       fb_api_caller_class: "RelayModern",
-      doc_id: "100000484977006",
+      doc_id: "100055235077658",
       variables: JSON.stringify({
         "input": {
           "composer_entry_point": "inline_composer",
@@ -866,4 +866,3 @@ function getGUID() {
     return r;
 }
 getGUID()
- 

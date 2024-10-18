@@ -3,7 +3,7 @@ const fs = require("fs");
  
 const fontMaps = [
   {
-    'name': 'a',
+    'name': '1',
     'map': {
       " ": " ",
       'a': '𝐚',
@@ -70,7 +70,7 @@ const fontMaps = [
       '9': '𝟗'
     }
   }, {
-    'name': 'b',
+    'name': '2',
     'map': {
       " ": " ",
       'a': '𝕒',
@@ -137,7 +137,7 @@ const fontMaps = [
       '9': '𝟡'
     }
   }, {
-    'name': 'c',
+    'name': '3',
     'map': {
       " ": " ",
       'a': '𝗮',
@@ -204,7 +204,7 @@ const fontMaps = [
       '9': '𝟵'
     }
   }, {
-    'name': 'd',
+    'name': '4',
     'map': {
       " ": " ",
       'a': '🅰',
@@ -271,7 +271,7 @@ const fontMaps = [
       '9': '❾'
     }
   }, {
-    'name': 'e',
+    'name': '5',
     'map': {
       " ": " ",
       'a': '𝑎',
@@ -338,7 +338,7 @@ const fontMaps = [
       '9': "9️⃣"
     }
   }, {
-    'name': 'f',
+    'name': '6',
     'map': {
       'a': '🅐',
       'b': '🅑',
@@ -404,7 +404,7 @@ const fontMaps = [
       '9': '❾'
     }
   }, {
-    'name': 'g',
+    'name': '7',
     'map': {
       'A': '𝙰',
       'B': '𝙱',
@@ -470,7 +470,7 @@ const fontMaps = [
       '9': '𝟿'
     }
   }, {
-    'name': 'h',
+    'name': '8',
     'map': {
       'a': '🄰',
       'b': '🄱',
@@ -542,9 +542,9 @@ module.exports = {
   config: {
     name: 'font',
     version: '1.0',
-    author: 'Coffee',
+    author: 'SK-SIDDIK-KHAN',
     countDown: 0,
-    role: 0, // Set role to 0 for public access
+    role: 0, 
     shortDescription: 'Convert text to different fonts',
     longDescription:
       'Choose from various font styles like bold, italic, cursive, etc. and transform your text into a unique visual format.',
@@ -554,21 +554,17 @@ module.exports = {
   onStart: async ({ event, api, args }) => {
     if (args.length === 1 && args[0].toLowerCase() === 'list') {
       const exampleText = 'Hello';
-      const header = '═════════════════   𝙰𝚟𝚊𝚒𝚕𝚊𝚋𝚕𝚎 𝙵𝚘𝚗𝚝𝚜 ƪ⁠(⁠‾⁠.⁠‾⁠“⁠)⁠┐\n═════════════════\n𝙵𝚘𝚗𝚝 𝙽𝚊𝚖𝚎       𝚂𝚊𝚖𝚙𝚕𝚎';
+      const header = '𝐒𝐈𝐃𝐃𝐈𝐊-𝐁𝐎𝐓-𝐅𝐎𝐍𝐓-𝐋𝐈𝐒𝐓\n';
  
-      // Calculate the maximum length of the font names
       const maxFontNameLength = Math.max(...fontMaps.map(fontMap => fontMap.name.length));
  
-      // Create the font list with perfect vertical alignment
       const availableFontsList = fontMaps.map((fontMap) => {
         const exampleChar = exampleText.split('')
           .map((char) => fontMap.map[char] || char)
           .join('');
  
-        // Adjust the padding for font names
         const formattedFontName = `★ ${fontMap.name.padEnd(maxFontNameLength)}`;
  
-        // Calculate the padding for perfect vertical alignment
         const padding = ' '.repeat(maxFontNameLength - fontMap.name.length);
  
         return `${formattedFontName}${padding}  ${exampleChar}`;
@@ -583,7 +579,7 @@ module.exports = {
  
     if (args.length < 2) {
       return api.sendMessage(
-        "|｡_｡| Invalid Usage: Please use the command with a font type and text.\n\nExample: -font bold i love you \n\nChat -𝘧𝘰𝘯𝘵 𝘭𝘪𝘴𝘵 to see more! •ᴗ•",
+        "╭━─━─━≪𝐄𝐗𝐀𝐌𝐏𝐋𝐄≫━─━─━❯❯\n│•font 1 𝐒𝐈𝐃𝐃𝐈𝐊-𝟎𝟕\n│•font 2 𝕊𝕀𝔻𝔻𝕀𝕂-𝟘𝟟\n│•font 3 𝗦𝗜𝗗𝗗𝗜𝗞-𝟬𝟳\n│•font 4 🆂🅸🅳🅳🅸🅺-⓿❼\n│•font 5 𝑺𝑰𝑫𝑫𝑰𝑲-0⃣7⃣\n│•font 6 🅢🅘🅓🅓🅘🅚-⓿❼\n│•font 7 𝚂𝙸𝙳𝙳𝙸𝙺-𝟶𝟽\n│•font 8 🅂🄸🄳🄳🄸🄺-⓪⑦\n╰━─━─━≪𝐅𝐎𝐍𝐓-𝐋𝐈𝐒𝐓≫━─━─━❯❯",
         event.threadID,
         event.messageID
       );
@@ -605,7 +601,7 @@ module.exports = {
     if (!chosenFontMap) {
       const availableFonts = fontMaps.map((fontMap) => `★ ${fontMap.name}`).join('\n');
       return api.sendMessage(
-        `|｡_｡| Invalid Font Type: Available fonts:\n${availableFonts}\n\nExample: -font bold Hello! •ᴗ•`,
+        `Invalid Font Type: Available fonts:\n${availableFonts}\n\nExample: -font bold Hello! •ᴗ•`,
         event.threadID,
         event.messageID
       );

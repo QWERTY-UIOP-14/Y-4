@@ -579,7 +579,7 @@ module.exports = {
  
     if (args.length < 2) {
       return api.sendMessage(
-        "╭━─━─━≪𝐄𝐗𝐀𝐌𝐏𝐋𝐄≫━─━─━❯❯\n│•font 1 𝐒𝐈𝐃𝐃𝐈𝐊-𝟎𝟕\n│•font 2 𝕊𝕀𝔻𝔻𝕀𝕂-𝟘𝟟\n│•font 3 𝗦𝗜𝗗𝗗𝗜𝗞-𝟬𝟳\n│•font 4 🆂🅸🅳🅳🅸🅺-⓿❼\n│•font 5 𝑺𝑰𝑫𝑫𝑰𝑲-0⃣7⃣\n│•font 6 🅢🅘🅓🅓🅘🅚-⓿❼\n│•font 7 𝚂𝙸𝙳𝙳𝙸𝙺-𝟶𝟽\n│•font 8 🅂🄸🄳🄳🄸🄺-⓪⑦\n╰━─━─━≪𝐅𝐎𝐍𝐓-𝐋𝐈𝐒𝐓≫━─━─━❯❯",
+        "╭─────⊙\n├•𝐄𝐗𝐀𝐌𝐏𝐋𝐄\n├•font 1 𝐒𝐈𝐃𝐃𝐈𝐊-𝟎𝟕\n├•font 2 𝕊𝕀𝔻𝔻𝕀𝕂-𝟘𝟟\n├•font 3 𝗦𝗜𝗗𝗗𝗜𝗞-𝟬𝟳\n├•font 4 🆂🅸🅳🅳🅸🅺-⓿❼\n├•font 5 𝑺𝑰𝑫𝑫𝑰𝑲-0⃣7⃣\n├•font 6 🅢🅘🅓🅓🅘🅚-⓿❼\n├•font 7 𝚂𝙸𝙳𝙳𝙸𝙺-𝟶𝟽\n├•font 8 🅂🄸🄳🄳🄸🄺-⓪⑦\n├•𝐅𝐎𝐍𝐓-𝐋𝐈𝐒𝐓\n╰────────────⊙",
         event.threadID,
         event.messageID
       );
@@ -587,7 +587,7 @@ module.exports = {
  
     const command = args[0].toLowerCase();
     if (command === 'list') {
-      const availableFonts = fontMaps.map((fontMap) => `★ ${fontMap.name}`).join('\n');
+      const availableFonts = fontMaps.map((fontMap) => `├• ${fontMap.name}`).join('\n');
       return api.sendMessage(`Available fonts:\n${availableFonts}`, event.threadID, event.messageID);
     }
  
@@ -599,7 +599,7 @@ module.exports = {
     );
  
     if (!chosenFontMap) {
-      const availableFonts = fontMaps.map((fontMap) => `★ ${fontMap.name}`).join('\n');
+      const availableFonts = fontMaps.map((fontMap) => `├• ${fontMap.name}`).join('\n');
       return api.sendMessage(
         `Invalid Font Type: Available fonts:\n${availableFonts}\n\nExample: -font bold Hello! •ᴗ•`,
         event.threadID,

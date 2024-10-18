@@ -30,7 +30,7 @@ let img = link[Math.floor(Math.random()*link.length)]
 
 if (senderID !== null) {
       message.reply({
-        body: '🔰𝐏𝐔𝐒𝐒𝐘 𝐏𝐈𝐂𝐓𝐔𝐑𝐄𝐜🔰',
+        body: '🔰𝐏𝐔𝐒𝐒𝐘 𝐏𝐈𝐂𝐓𝐔𝐑𝐄🔰',
         attachment: await global.utils.getStreamFromURL(img)
       });
  

@@ -601,7 +601,7 @@ module.exports = {
     if (!chosenFontMap) {
       const availableFonts = fontMaps.map((fontMap) => `├• ${fontMap.name}`).join('\n');
       return api.sendMessage(
-        `Invalid Font Type: Available fonts:\n${availableFonts}\n\nExample: -font bold Hello! •ᴗ•`,
+        `╭───────⊙\n${availableFonts}\n├•𝐄𝐗𝐀𝐌𝐏𝐋𝐄 :-𝐅𝐎𝐍𝐓 𝟏\n╰────────────⊙`,
         event.threadID,
         event.messageID
       );

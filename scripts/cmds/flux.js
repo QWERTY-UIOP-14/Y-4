@@ -21,7 +21,7 @@ module.exports.config = {
 module.exports.onStart = async ({ message, event, args, api }) => {
   try {
   const prompt = args.join(" ");
-    const ok = message.reply('please with')
+    const ok = message.reply('please wait')
     api.setMessageReaction("✆", event.messageID, (err) => {}, true);
     const { data } = await axios.get(
           `${await baseApiUrl()}/flux?prompt=${prompt}`

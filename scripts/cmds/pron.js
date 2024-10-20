@@ -4,8 +4,8 @@ module.exports = {
     version: "1.0",
     author: "SK-SIDDIK-KHAN",
     countDown: 20,
-    role: 0,
-    category: "user",
+    role: 2,
+    category: "owner",
   },
  
   sentVideos: [],

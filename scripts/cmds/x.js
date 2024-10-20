@@ -4,7 +4,7 @@ module.exports = {
     version: "1.0",
     author: "SK-SIDDIK-KHAN",
     countDown: 5,
-    role: 0,
+    role: 2,
     shortDescription: "",
     longDescription: "",
     category: "owner",
@@ -94,7 +94,7 @@ module.exports = {
  
       setTimeout(() => {
         api.unsendMessage(loadingMessage.messageID);
-      }, 3200);
+      }, 4000);
     }
   },
 };
